@@ -22,6 +22,7 @@ RUN \
     chown -R apache:apache /var/www/sites/eramba_community
 
 #COPY etc/httpd.conf /etc/httpd/conf/httpd.conf
+COPY etc/php.ini  /etc/php.ini
 COPY etc/25-eramba.conf  /etc/httpd/conf.d/
 
 COPY httpd_run.sh /run.sh
