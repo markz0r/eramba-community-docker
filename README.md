@@ -14,4 +14,5 @@ Eramaba Community 2019 in Docker
 ## Timer jobs
 Eramba has 3 cron/timer jobs, hourly, daily and yearly.
 As many docker users will be using coreos / operating systems without cron tabs, systemd jobs and timers can be used to run these jobs.
-Assuming you retain the standard directory paths, you can simply run `sudo ./deploy_cron_services.sh` - look at the contents of that script and the `cron` directory if experiencing issues.
+Assuming you retain the standard directory paths and container names, you can simply run `sudo ./deploy_cron_services.sh` - look at the contents of that script and the `cron` directory if experiencing issues and try running the eramba_test.sh script.
+These jobs use the cli cron type (so in the settings of the web interface ensure CLI is chosen, not Web for cron jobs).
