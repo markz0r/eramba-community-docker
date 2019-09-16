@@ -10,3 +10,8 @@ Eramaba Community 2019 in Docker
 5. Run `docker-compose up -d` - this will start containers in the background
 6. On first time start, you need to create the database tables, to do this run `sh ./create_db_tables.sh`
 7. You should now be able to load the initial login page via a browser, i.e.: http://localhost/
+
+## Timer jobs
+Eramba has 3 cron/timer jobs, hourly, daily and yearly.
+As many docker users will be using coreos / operating systems without cron tabs, systemd jobs and timers can be used to run these jobs.
+Assuming you retain the standard directory paths, you can simply run `sudo ./deploy_cron_services.sh` - look at the contents of that script and the `cron` directory if experiencing issues.
