@@ -39,7 +39,6 @@ systemctl start eramba-hourly.service
 systemctl start eramba-daily.service
 systemctl start eramba-yearly.service
 
-
 systemctl enable eramba-hourly.timer
 systemctl enable eramba-daily.timer
 systemctl enable eramba-yearly.timer
