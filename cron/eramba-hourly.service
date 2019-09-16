@@ -1,0 +1,9 @@
+[Unit]
+Description=Eramaba hourly job runner
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/sh /data/eramba/cron/eramba_hourly.sh
+
+[Install]
+WantedBy=multi-user.target

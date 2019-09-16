@@ -1,0 +1,9 @@
+[Unit]
+Description=Eramaba yearly job runner
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/sh /data/eramba/cron/eramba_yearly.sh
+
+[Install]
+WantedBy=multi-user.target

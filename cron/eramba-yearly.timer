@@ -1,0 +1,8 @@
+[Unit]
+Description=Run eramaba-yearly.service every year
+
+[Timer]
+OnCalendar=yearly
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,8 @@
+[Unit]
+Description=Run eramaba-hourly.service every hour
+
+[Timer]
+OnCalendar=hourly
+
+[Install]
+WantedBy=multi-user.target

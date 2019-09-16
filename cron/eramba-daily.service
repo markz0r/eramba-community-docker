@@ -1,0 +1,9 @@
+[Unit]
+Description=Eramaba daily job runner
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/sh /data/eramba/cron/eramba_daily.sh
+
+[Install]
+WantedBy=multi-user.target
