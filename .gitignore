@@ -1,6 +1,7 @@
 # envar file #
 ##############
 global_envars.cfg
+docker-compose.yml
 
 # Editors #
 ###########
