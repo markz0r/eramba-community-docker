@@ -1,0 +1,76 @@
+version: "3.7"
+services:
+  db:
+    image: markz0r/eramba-db
+    container_name: eramba-community-docker_db_1
+    restart: always
+    volumes:
+      - mysql-data:/var/lib/mysql
+    env_file:
+      - global_envars.cfg
+    environment:
+      - MYSQL_ROOT_PASSWORD=changeme
+    # If you are running on Windows or Mac the shared volume will cause
+    # an InnoDB error, uncomment the following lines:
+    #
+    #command:
+    #  'mysqld --innodb-flush-method=fsync'
+  app:
+    # image: digitorus/eramba:enterprise
+    image: markz0r/eramba-app
+    container_name: eramba-community-docker_app_1
+    depends_on:
+      - db
+    restart: always
+    volumes:
+      - eramba-files:/var/www/sites/eramba_community/app/webroot/files
+      - eramba-backups:/var/www/sites/eramba_community/app/webroot/backups
+      - eramba-applogs:/var/www/sites/eramba_community/app/tmp/logs
+      - eramba-syslogs:/var/log
+    env_file:
+      - global_envars.cfg
+    environment:
+      - ERAMBA_HOSTNAME=app
+      - MYSQL_HOSTNAME=db
+      - DATABASE_PREFIX=
+    # map the domain to localhost for wkhtmltopdf
+    extra_hosts:
+      - "eramba:172.17.0.1"
+    ports:
+     - "80:8080"
+    links:
+     - db
+    # You can create a full database backup with:
+      # docker exec db-container sh -c \
+      # 'exec mysqldump --all-databases -uroot -p"$MYSQL_ROOT_PASSWORD"' > ~/backup/all-databases.sql;
+volumes:
+  mysql-data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /data/eramba/mysql
+  eramba-files:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /data/eramba/files
+  eramba-backups:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /data/eramba/backups
+  eramba-applogs:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /data/eramba/erambalogs
+  eramba-syslogs:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /data/eramba/systemlogs
