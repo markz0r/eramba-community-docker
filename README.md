@@ -17,3 +17,9 @@ Eramba has 3 cron/timer jobs, hourly, daily and yearly.
 As many docker users will be using coreos / operating systems without cron tabs, systemd jobs and timers can be used to run these jobs.
 Assuming you retain the standard directory paths and container names, you can simply run `sudo ./deploy_cron_services.sh` - look at the contents of that script and the `cron` directory if experiencing issues and try running the eramba_test.sh script.
 These jobs use the cli cron type (so in the settings of the web interface ensure CLI is chosen, not Web for cron jobs).
+
+## Upgrade applied then new container built (DB and APP version mismatch)
+By default your deployment will start with c2.4.1 or eramba community.
+You can then upgrade it to the latest minor release via the setting page.
+If you do upgrade then the app container is lost, your DB will be stuck on a new version (say 2.6.2) but the new app container will start back at 2.4.1 (which wont work well).
+If that occurs specify the desired version of the container in your docker-compose.yml, e.g.: `image: markz0r/eramba-app` becomes `image: markz0r/eramba-app:c262`

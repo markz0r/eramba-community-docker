@@ -17,6 +17,7 @@ RUN \
 # Assumes you have downloaded eramaba community tarball to c241.tgz
 # e.g.: https://downloadseramba.s3-eu-west-1.amazonaws.com/CommunityTGZ/c241.tgz
 ADD c241.tgz /var/www/sites
+#ADD c262.tgz /var/www/sites
 
 RUN \
     chown -R apache:apache /var/www/sites/eramba_community
