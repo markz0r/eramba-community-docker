@@ -15,7 +15,7 @@ sed -i "s#'database' => '',#'database' => '${MYSQL_DATABASE}',#g" ${db_config_fi
 sed -i "s#'prefix' => '',#'prefix' => '${DATABASE_PREFIX}',#g" ${db_config_file}
 #######################################
 
-sed -i "s#Listen 80#Listen 8080#g" /etc/httpd/conf/httpd.conf
+sed -i "s/Listen 80$/Listen 8080/g" /etc/httpd/conf/httpd.conf
 
 ### STARTING APACHE ###
 rm -vf /var/run/httpd/httpd.pid
