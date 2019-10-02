@@ -16,11 +16,14 @@ RUN \
 
 # Assumes you have downloaded eramaba community tarball to c241.tgz
 # e.g.: https://downloadseramba.s3-eu-west-1.amazonaws.com/CommunityTGZ/c241.tgz
-ADD c241.tgz /var/www/sites
-#ADD c262.tgz /var/www/sites
+#ADD c241.tgz /var/www/sites
+ADD c262.tgz /var/www/sites
 
+# Fix for broken community version which does not have NotificationSystem
 RUN \
-    chown -R apache:apache /var/www/sites/eramba_community
+    sed -i "s#// check if notifications use this filter#/* MC FIX - check if notifications use this filter#g" /var/www/sites/eramba_community/app/Module/AdvancedFilters/Controller/AdvancedFiltersController.php \
+    && sed -i "s#// or is in use in reports#*/ - // or is in use in reports#g" /var/www/sites/eramba_community/app/Module/AdvancedFilters/Controller/AdvancedFiltersController.php \
+    && chown -R apache:apache /var/www/sites/eramba_community
 
 #COPY etc/httpd.conf /etc/httpd/conf/httpd.conf
 COPY etc/php.ini  /etc/php.ini
