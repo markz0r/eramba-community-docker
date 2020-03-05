@@ -17,7 +17,7 @@ services:
     #  'mysqld --innodb-flush-method=fsync'
   app:
     # image: digitorus/eramba:enterprise
-    image: markz0r/eramba-app
+    image: markz0r/eramba-app:c281
     container_name: eramba-community-docker_app_1
     depends_on:
       - db

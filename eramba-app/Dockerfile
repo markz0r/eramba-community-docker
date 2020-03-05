@@ -14,10 +14,12 @@ RUN \
     && rm -vf /etc/httpd/conf.d/autoindex.conf /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/userdir.conf \
     && mkdir -p /var/www/sites
 
-# Assumes you have downloaded eramaba community tarball to c241.tgz
+# Assumes you have downloaded eramaba community tarball to c281.tgz
 # e.g.: https://downloadseramba.s3-eu-west-1.amazonaws.com/CommunityTGZ/c241.tgz
+# e.g.: https://downloadseramba.s3-eu-west-1.amazonaws.com/CommunityTGZ/c281.tgz
+# Generally you need to visit
 #ADD c241.tgz /var/www/sites
-ADD c262.tgz /var/www/sites
+ADD https://downloadseramba.s3-eu-west-1.amazonaws.com/CommunityTGZ/latest.tgz /var/www/sites
 
 # Fix for broken community version which does not have NotificationSystem
 RUN \
