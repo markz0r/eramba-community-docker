@@ -1,4 +1,4 @@
-Eramaba Community 2019 in Docker
+Eramaba Community (c.2.8.1) in Docker
 --------------------------------
 1. Clone this repo and cd into it
 2. Copy `docker-compose-template.yml` to `docker-compose.yml`
