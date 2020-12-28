@@ -19,7 +19,7 @@ Assuming you retain the standard directory paths and container names, you can si
 These jobs use the cli cron type (so in the settings of the web interface ensure CLI is chosen, not Web for cron jobs).
 
 ## Upgrade applied then new container built (DB and APP version mismatch)
-By default your deployment will start with c2.4.1 or eramba community.
-You can then upgrade it to the latest minor release via the setting page.
-If you do upgrade then the app container is lost, your DB will be stuck on a new version (say 2.6.2) but the new app container will start back at 2.4.1 (which wont work well).
-If that occurs specify the desired version of the container in your docker-compose.yml, e.g.: `image: markz0r/eramba-app` becomes `image: markz0r/eramba-app:c262`
+By default your deployment will start with c2.8.1 of eramba community.
+Periodically eramba.org will releae updates which can be applied via the setting page in the web app.
+If you do upgrade then the app container is lost, your DB will be stuck on a new version (say c2.8.2) but the new app container will start back at 2.8.1 (which wont work well if there were schema changes to the database between those releases).
+If that occurs specify the desired version of the container in your docker-compose.yml, e.g.: `image: markz0r/eramba-app` becomes `image: markz0r/eramba-app:c282`; this is dependent on the maintainer completing a new docker image in a timely fashion.
