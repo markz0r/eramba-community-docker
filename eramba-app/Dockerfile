@@ -1,7 +1,5 @@
 FROM centos:7
 
-MAINTAINER "Mark C" <mark@straightit.com>
-
 RUN \
     yum -y install epel-release \
     && yum install -y httpd mod_ssl wget libXext libXrender xorg-x11-fonts-75dpi xorg-x11-fonts-Type1 \
